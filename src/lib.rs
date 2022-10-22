@@ -104,9 +104,9 @@ async fn fetch(url: &str) -> Result<String> {
     }
 }
 
-fn from_json<T>(text: &str) -> Result<T>
+fn from_json<T>(json: &str) -> Result<T>
     where T: serde::de::DeserializeOwned {
-    match serde_json::from_str::<T>(text) {
+    match serde_json::from_str::<T>(json) {
         Ok(data_struct) => Ok(data_struct),
         Err(error) => Err(Error::ParseJson(error))
     }
