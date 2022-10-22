@@ -3,7 +3,7 @@ name = "random_word"
 description = "Simple functions for generating random english words"
 version = "0.1.0"
 edition = "2021"
-authors = "Mitchell Rhys Hall"
+authors = ["Mitchell Rhys Hall"]
 license = "MIT"
 categories = [
     "Random", 

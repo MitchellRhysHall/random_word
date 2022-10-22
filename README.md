@@ -3,14 +3,11 @@
 The `random_word` crate provides a simple way to generate random 
 english words.
 
-The [`random_word`][Words] struct is asynchronous.
+The `random_word::Words` associated functions are asynchronous.
 
 ## Generating a random word
 
 ```rust
 use random_word::Words;
-# async fn random_word() -> Result<(), random_word::Error> {
 let word = Words::random().await;
-# Ok(())
-# }
 ```
