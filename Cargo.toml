@@ -1,14 +1,12 @@
 [package]
 name = "random_word"
 description = "Simple functions for generating random english words"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Mitchell Rhys Hall"]
+repository = "https://github.com/MitchellRhysHall/random_word"
 license = "MIT"
-categories = [
-    "Random", 
-    "Words"
-]
+categories = []
 keywords = [
     "random",
     "words",
