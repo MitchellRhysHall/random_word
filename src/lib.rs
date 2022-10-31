@@ -33,7 +33,7 @@ fn random_test() {
     let array = &["1","2","3","4","5"];
     // All options from array should be pushed into this set.
     // This ensures that the random selection function
-    // is capable of selecting all avaliable items from array.
+    // is capable of selecting all available items from array.
     let mut set = std::collections::HashSet::new();
     (0..500000).for_each(|_| {
         let choice = select_random(array);
