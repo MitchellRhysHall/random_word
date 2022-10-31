@@ -78,8 +78,7 @@ fn gen_test() {
 /// ```
 ///
 pub fn gen_starts_with(character: &char) -> &'static str {
-    let words_slice = gen_all_starts_with(character);
-    select_random(&words_slice)
+    select_random(&gen_all_starts_with(character))
 }
 
 #[test]
@@ -94,7 +93,7 @@ fn gen_starts_with_test() {
 }
 
 /// Returns an alphabetically ordered slice to all words 
-/// that begin with the specified character
+/// that begin with the specified character.
 ///
 /// # Examples
 ///
@@ -149,7 +148,7 @@ fn gen_all_starts_with_test() {
     })
 }
 
-/// Returns a reference to 178,187 english words in alphabetical order
+/// Returns a reference to 178,187 english words in alphabetical order.
 ///
 /// # Examples
 ///
