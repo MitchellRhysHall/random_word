@@ -183,11 +183,13 @@ fn gen_all_test() {
     })
 }
 
-/// For use during development only
+#[test]
 fn gen_all_indexes_from_first_char() {
     let word_list = gen_all();
     ('a'..='z').for_each(|c| {
-        let i = word_list.iter().position(|w| w.starts_with(c)).unwrap();
-        println!("first index starting with {c} is {i}");
+        let i = word_list.iter().position(|w| w.starts_with(c))
+            .expect("words starting with any alphabetic character 
+                should be represented in words array");
+        //println!("first index starting with {c} is {i}");
     });
 }
