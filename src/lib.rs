@@ -72,12 +72,12 @@ fn gen_test() {
 ///
 /// ```rust
 /// # fn gen_starts_with() -> Result<(),&'static str> {
-/// let word = random_word::gen_starts_with(&'s');
+/// let word = random_word::gen_starts_with('s');
 /// # Ok(())
 /// # }
 /// ```
 ///
-pub fn gen_starts_with(character: &char) -> &'static str {
+pub fn gen_starts_with(character: char) -> &'static str {
     select_random(&gen_all_starts_with(character))
 }
 
@@ -85,7 +85,7 @@ pub fn gen_starts_with(character: &char) -> &'static str {
 fn gen_starts_with_test() {
     ('a'..='z').for_each(|character| {
         (0..5000).for_each(|_|{
-            let word = gen_starts_with(&character);
+            let word = gen_starts_with(character);
             assert!(!word.is_empty(), "word should not be empty");
             assert!(word.starts_with(character), "word should start with {character}");
         })
@@ -99,12 +99,12 @@ fn gen_starts_with_test() {
 ///
 /// ```rust
 /// # fn gen_all_starts_with() -> Result<(),&'static str> {
-/// let t_words_slice = random_word::gen_all_starts_with(&'t');
+/// let t_words_slice = random_word::gen_all_starts_with('t');
 /// # Ok(())
 /// # }
 /// ```
 ///
-pub fn gen_all_starts_with(character: &char) -> &'static [&'static str] {
+pub fn gen_all_starts_with(character: char) -> &'static [&'static str] {
     &WORDS[match character {
         'a' | 'A' =>      0..10363,
         'b' | 'B' =>  10363..20327,
@@ -139,7 +139,7 @@ pub fn gen_all_starts_with(character: &char) -> &'static [&'static str] {
 #[test]
 fn gen_all_starts_with_test() {
     ('a'..='z').chain('A'..'Z').for_each(|character| {
-        let word_list = gen_all_starts_with(&character);
+        let word_list = gen_all_starts_with(character);
         word_list.iter().for_each(|word| {
             let character = character.to_ascii_lowercase();
             assert!(!word.is_empty(), "word should not be empty");
