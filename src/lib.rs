@@ -15,9 +15,8 @@
 //! ## Generating a random word
 //!
 //! ```rust
-//! use random_word;
 //! # fn gen() -> Result<(),&'static str> {
-//! let word = gen();
+//! let word = random_word::gen();
 //! # Ok(())
 //! # }
 //! ```
