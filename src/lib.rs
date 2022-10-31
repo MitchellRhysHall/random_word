@@ -29,7 +29,7 @@ fn select_random(array: &'static [&'static str]) -> &'static str {
 }
 
 #[test]
-fn random_test() {
+fn select_random_test() {
     let array = &["1","2","3","4","5"];
     // All options from array should be pushed into this set.
     // This ensures that the random selection function
@@ -49,7 +49,7 @@ fn random_test() {
 
 /// Returns a reference to a randomly generated english word.
 ///
-/// # Examples
+/// # Example
 ///
 /// ```rust
 /// # fn gen() -> Result<(),&'static str> {
@@ -74,10 +74,10 @@ fn gen_test() {
     })
 }
 
-/// Returns a reference to a randomly generated english word, 
-/// filtering by first character.
+/// Returns an reference to a word that begins with the 
+/// specified character.
 ///
-/// # Examples
+/// # Example
 ///
 /// ```rust
 /// # fn gen_starts_with() -> Result<(),&'static str> {
@@ -104,7 +104,7 @@ fn gen_starts_with_test() {
 /// Returns an alphabetically ordered slice to all words 
 /// that begin with the specified character.
 ///
-/// # Examples
+/// # Example
 ///
 /// ```rust
 /// # fn gen_all_starts_with() -> Result<(),&'static str> {
@@ -159,7 +159,7 @@ fn gen_all_starts_with_test() {
 
 /// Returns a reference to 178,187 english words in alphabetical order.
 ///
-/// # Examples
+/// # Example
 ///
 /// ```rust
 /// # fn gen_all() -> Result<(),[&'static str; 178187]> {
