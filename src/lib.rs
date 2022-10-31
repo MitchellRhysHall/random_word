@@ -4,7 +4,11 @@
 //! # random_word
 //!
 //! The `random_word` crate provides a simple way to generate random 
-//! english words. This crate is optimized for reduced binary size.
+//! english words. 
+//! 
+//! This crate is optimized for reduced memory usage.
+//! Library size approx ~450kb.
+//! 
 //! All 178,187 words are compiled with the library.
 //! All functions return static references.
 //! 
