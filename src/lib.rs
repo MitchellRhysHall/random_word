@@ -174,7 +174,7 @@ fn gen_all_test() {
     })
 }
 
-/// For use during testing only
+/// For use during development only
 fn gen_all_indexes_from_first_char() {
     let word_list = gen_all();
     ('a'..='z').for_each(|c| {
