@@ -1,11 +1,10 @@
 # random_word
 
-The `random_word` crate provides a simple way to generate random 
-english words.
+The `random_word` crate provides an efficient way to generate random 
+english words. 
 
 ## Generating a random word
 
 ```rust
-use random_word;
-let word = generate();
+let word = random_word::gen();
 ```

@@ -3,7 +3,7 @@
 
 //! # random_word
 //!
-//! The `random_word` crate provides a simple way to generate random 
+//! The `random_word` crate provides an efficient way to generate random 
 //! english words. 
 //! 
 //! This crate is optimized for reduced memory usage.
