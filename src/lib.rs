@@ -31,11 +31,20 @@ fn select_random(array: &'static [&'static str]) -> &'static str {
 #[test]
 fn random_test() {
     let array = &["1","2","3","4","5"];
+    // All options from array should be pushed into this set.
+    // This ensures that the random selection function
+    // is capable of selecting all avaliable items from array.
+    let mut set = std::collections::HashSet::new();
     (0..500000).for_each(|_| {
         let choice = select_random(array);
+        set.insert(choice);
         assert!(!choice.is_empty(), "Random choice should not be empty");
         assert!(array.contains(&choice), "Random choice should be from input array");
-    })
+    });
+    assert_eq!(set.len(), array.len(), "Set length should match array length");
+    array.iter().for_each(|item| {
+        assert!(set.contains(item), "Set should contain array item");
+    });
 }
 
 /// Returns a reference to a randomly generated english word.
