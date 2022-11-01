@@ -1,7 +1,7 @@
 [package]
 name = "random_word"
-description = "Reliable and memory efficient functions for generating random english words"
-version = "0.2.2"
+description = "Reliable and efficient functions for generating random english words"
+version = "0.2.3"
 edition = "2021"
 authors = ["Mitchell Rhys Hall"]
 repository = "https://github.com/MitchellRhysHall/random_word"

@@ -54,7 +54,7 @@ pub fn gen() -> &'static str {
     select_random(&WORDS)
 }
 
-/// Returns an reference to a word that begins with the 
+/// Returns a reference to a word that begins with the 
 /// specified character.
 ///
 /// # Example
@@ -65,7 +65,12 @@ pub fn gen() -> &'static str {
 /// # Ok(())
 /// # }
 /// ```
-///
+/// 
+/// # Errors
+/// 
+/// This function fails if:
+/// - The input parameter is not an alphabetic character
+/// 
 #[inline]
 pub fn gen_starts_with(character: char) -> Result<&'static str, Error> {
     Ok(select_random(&gen_all_starts_with(character)?))
@@ -78,11 +83,16 @@ pub fn gen_starts_with(character: char) -> Result<&'static str, Error> {
 ///
 /// ```rust
 /// # fn gen_all_starts_with() -> Result<(),&'static str> {
-/// let t_words_slice = random_word::gen_all_starts_with('t');
+/// let word_list = random_word::gen_all_starts_with('t');
 /// # Ok(())
 /// # }
 /// ```
 ///
+/// # Errors
+/// 
+/// This function fails if:
+/// - The input parameter is not an alphabetic character
+/// 
 #[inline]
 pub fn gen_all_starts_with(character: char) -> Result<&'static [&'static str], Error> {
     match character {
