@@ -19,12 +19,12 @@
 //! # }
 //! ```
 
-mod words_AtoZ;
-mod words_2to15;
+mod words_a_z;
+mod words_len_asc;
 mod tests;
 
-use words_AtoZ::WORDS_ATOZ;
-use words_2to15::WORDS_2TO15;
+use words_a_z::WORDS_A_Z;
+use words_len_asc::WORDS_LEN_ASC;
 
 /// Represents all possible errors.
 #[derive(Debug)]
@@ -51,7 +51,7 @@ fn select_random(array: &'static [&'static str]) -> &'static str {
 ///
 #[inline]
 pub fn gen() -> &'static str {
-    select_random(&WORDS_ATOZ)
+    select_random(&WORDS_A_Z)
 }
 
 /// Returns a reference to a word that begins with the 
@@ -99,7 +99,7 @@ pub fn gen_all_starts_with(character: char) -> Result<&'static [&'static str], E
         Err(Error::NonAlphabeticCharacter(character)) 
     }
     else {
-        Ok(&WORDS_ATOZ[match character {
+        Ok(&WORDS_A_Z[match character {
             'a' | 'A' =>      0..10363,
             'b' | 'B' =>  10363..20327,
             'c' | 'C' =>  20327..36906,
@@ -153,7 +153,7 @@ pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
         None 
     }
     else {
-        Some(&WORDS_2TO15[match length {
+        Some(&WORDS_LEN_ASC[match length {
             2  =>      0..99,
             3  =>    100..1102,
             4  =>   1102..5097,
@@ -207,5 +207,5 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
 ///
 #[inline]
 pub fn gen_all() -> &'static [&'static str; 178187] {
-    &WORDS_ATOZ
+    &WORDS_A_Z
 }

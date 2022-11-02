@@ -47,7 +47,7 @@ fn gen_starts_with_test() {
             let word = gen_starts_with(character).expect("character is not alphabetic");
             let character = character.to_ascii_lowercase();
             assert!(!word.is_empty(), "word should not be empty");
-            assert!(word.starts_with(character), "word should start with {character}");
+            assert!(word.starts_with(character), "word should start with {character}")
         })
     })
 }

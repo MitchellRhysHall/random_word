@@ -1,7 +1,7 @@
 /// A list of known english words 
 /// sorted alphabetically. 
 /// Does not inlcude words "a" or "i".
-pub static WORDS_ATOZ: [&str; 178187] = [
+pub static WORDS_A_Z: [&str; 178187] = [
 "abreact",
 "abreacted",
 "abreacting",

@@ -1,7 +1,7 @@
 /// A list of known english words 
 /// sorted by length smallest to largest (2 - 15).
 /// Does not inlcude words "a" or "i".
-pub static WORDS_2TO15: [&str; 178187] = [
+pub static WORDS_LEN_ASC: [&str; 178187] = [
 "ad",
 "ae",
 "ag",
