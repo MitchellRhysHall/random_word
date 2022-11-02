@@ -7,7 +7,7 @@
 //! The `random_word` crate provides an efficient way to generate random 
 //! english words. 
 //! 
-//! All words a compiled with the library pre-sorted, 
+//! All words are compiled with the library pre-sorted, 
 //! optimized for fast, zero allocation lookup.
 //! 
 //! ## Generating a random word
@@ -69,7 +69,7 @@ pub fn gen() -> &'static str {
 /// # Errors
 /// 
 /// This function fails if:
-/// - The input parameter is not an alphabetic character
+/// - the input parameter is not an alphabetic character
 /// 
 #[inline]
 pub fn gen_starts_with(character: char) -> Result<&'static str, Error> {
@@ -91,7 +91,7 @@ pub fn gen_starts_with(character: char) -> Result<&'static str, Error> {
 /// # Errors
 /// 
 /// This function fails if:
-/// - The input parameter is not an alphabetic character
+/// - the input parameter is not an alphabetic character
 /// 
 #[inline]
 pub fn gen_all_starts_with(character: char) -> Result<&'static [&'static str], Error> {
@@ -145,7 +145,7 @@ pub fn gen_all_starts_with(character: char) -> Result<&'static [&'static str], E
 /// # Errors
 /// 
 /// This function fails if:
-/// - If the length parameter is less than 2 or greater than 15
+/// - the length parameter is less than 2 or greater than 15
 /// 
 #[inline]
 pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
@@ -187,14 +187,14 @@ pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
 /// # Errors
 /// 
 /// This function fails if:
-/// - If the length parameter is less than 2 or greater than 15
+/// - the length parameter is less than 2 or greater than 15
 /// 
 #[inline]
 pub fn gen_len(length: usize) -> Option<&'static str> {
     Some(select_random(&gen_all_len(length)?))
 }
 
-/// Returns an alphabetical ordered array of 178,187 english words.
+/// Returns an alphabetically ordered array of 178,187 english words.
 ///
 /// # Example
 ///
