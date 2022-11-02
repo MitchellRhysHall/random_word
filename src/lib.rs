@@ -19,11 +19,11 @@
 //! # }
 //! ```
 
-mod words_atoz;
+mod words_AtoZ;
 mod words_2to15;
 mod tests;
 
-use words_atoz::WORDS_ATOZ;
+use words_AtoZ::WORDS_ATOZ;
 use words_2to15::WORDS_2TO15;
 
 /// Represents all possible errors.

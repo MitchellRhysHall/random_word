@@ -1,6 +1,6 @@
- /// A list of known english words 
- /// sorted alphabetically. 
- /// Does not inlcude words "a" or "i".
+/// A list of known english words 
+/// sorted alphabetically. 
+/// Does not inlcude words "a" or "i".
 pub static WORDS_ATOZ: [&str; 178187] = [
 "abreact",
 "abreacted",

@@ -1,5 +1,5 @@
- /// A list of known english words 
- /// sorted by length smallest to largest (2 - 15).
+/// A list of known english words 
+/// sorted by length smallest to largest (2 - 15).
 /// Does not inlcude words "a" or "i".
 pub static WORDS_2TO15: [&str; 178187] = [
 "ad",
