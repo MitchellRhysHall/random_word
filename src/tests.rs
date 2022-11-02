@@ -65,6 +65,35 @@ fn gen_all_starts_with_test() {
     })
 }
 
+#[test]
+fn gen_len_test() {
+    (2..16).for_each(|length| {
+        (0..5000).for_each(|_| {
+            let word = gen_len(length).unwrap();
+            assert!(!word.is_empty(), 
+                "word should not be empty in word list");
+            assert!(word.chars().all(|c| ('a'..='z').contains(&c)),
+                "word should only contain lowercase alphabetical characters");
+            assert_eq!(word.len(), length,
+                "word should be {length} characters in length");  
+        })
+    })
+}
+
+#[test]
+fn gen_all_len_test() {
+    (2..16).for_each(|length| {
+        let word_list = gen_all_len(length).unwrap();
+        word_list.iter().for_each(|word| {
+            assert!(!word.is_empty(), 
+                "word should not be empty in word list");
+            assert!(word.chars().all(|c| ('a'..='z').contains(&c)),
+                "word should only contain lowercase alphabetical characters");
+            assert_eq!(word.len(), length,
+                "word should be {length} characters in length");  
+        })
+    })
+}
 
 #[test]
 fn gen_all_test() {
