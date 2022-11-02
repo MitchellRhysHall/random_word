@@ -10,6 +10,8 @@
 //! All words are compiled with the library pre-sorted, 
 //! optimized for fast, zero allocation lookup.
 //! 
+//! **NOTE** Library size ~1.2MB
+//! 
 //! ## Generating a random word
 //!
 //! ```rust
