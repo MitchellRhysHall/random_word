@@ -96,6 +96,52 @@ fn gen_all_len_test() {
 }
 
 #[test]
+fn gen_len_starts_with_test() {
+    (2..16).for_each(|length| {
+        ('a'..='z').for_each(|character| {
+            match (length, character) {
+                (2,  'c') | (2,  'v') | (15, 'y') => (),
+                _ => {
+                    let word = gen_len_starts_with(length, character).unwrap();
+                    assert!(!word.is_empty(), 
+                        "{word} should not be empty in word list");
+                    assert!(word.chars().all(|c| ('a'..='z').contains(&c)),
+                        "{word} should only contain lowercase alphabetical characters");
+                    assert_eq!(word.len(), length,
+                        "{word} should be {length} characters in length");  
+                    assert!(word.starts_with(character), "{word} should start with {character}")
+                }
+            }
+        })
+    })
+}
+
+#[test]
+fn gen_all_len_starts_with_test() {
+    (2..16).for_each(|length| {
+        ('a'..='z').for_each(|character| {
+            match (length, character) {
+                (2,  'c') | (2,  'v') | (15, 'y') => {
+                    assert_eq!(gen_all_len_starts_with(length, character), None)
+                },
+                _ => {
+                    let word_list = gen_all_len_starts_with(length, character).unwrap();
+                    word_list.iter().for_each(|word| {
+                        assert!(!word.is_empty(), 
+                            "word should not be empty in word list");
+                        assert!(word.chars().all(|c| ('a'..='z').contains(&c)),
+                            "word should only contain lowercase alphabetical characters");
+                        assert_eq!(word.len(), length,
+                            "word should be {length} characters in length");  
+                        assert!(word.starts_with(character), "word should start with {character}")
+                    })
+                }
+            }
+        })
+    })
+}
+
+#[test]
 fn gen_all_test() {
     let word_list = gen_all();
     word_list.iter().for_each(|word| {
