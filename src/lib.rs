@@ -139,7 +139,7 @@ pub fn gen_all_starts_with(character: char) -> Option<&'static [&'static str]> {
 pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
     (length > 1 && length < 16).then_some(&WORDS_LEN_ASC[match length {
         2  =>      0..99,
-        3  =>    99..1102,
+        3  =>     99..1102,
         4  =>   1102..5097,
         5  =>   5097..13982,
         6  =>  13982..29702,
@@ -589,7 +589,7 @@ pub fn gen_len_starts_with(length: usize, character: char) -> Option<&'static st
 /// 
 /// # Errors
 /// 
-/// This function fails if:
+/// This function returns none if:
 /// - the length parameter is less than 2 or greater than 15
 /// 
 #[inline]

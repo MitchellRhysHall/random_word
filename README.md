@@ -11,3 +11,10 @@ optimized for fast, zero allocation lookup.
 ```rust
 let word = random_word::gen();
 ```
+
+## Generating a random word starting with 'c'
+
+```rust
+let word = random_word::gen_starts_with('c');
+assert!(word.is_some());
+```
