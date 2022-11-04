@@ -1,7 +1,7 @@
 /// A list of known english words 
 /// sorted by length smallest to largest (2 - 15).
-/// Does not inlcude words "a" or "i".
-pub static WORDS_LEN_ASC: [&str; 178187] = [
+/// Does not include words "a" or "i".
+pub(crate) static WORDS_LEN_ASC: [&str; 178187] = [
 "ad",
 "ae",
 "ag",

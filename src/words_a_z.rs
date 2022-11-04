@@ -1,7 +1,7 @@
 /// A list of known english words 
 /// sorted alphabetically. 
-/// Does not inlcude words "a" or "i".
-pub static WORDS_A_Z: [&str; 178187] = [
+/// Does not include words "a" or "i".
+pub(crate) static WORDS_A_Z: [&str; 178187] = [
 "abreact",
 "abreacted",
 "abreacting",
