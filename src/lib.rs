@@ -173,6 +173,23 @@ while_true,
 //! # Ok(())
 //! # }
 //! ```
+//! ## Generating a random word starting with 'c'
+//!
+//! ```rust
+//! # fn gen() -> Result<(),&'static str> {
+//! let word = random_word::gen_starts_with('c');
+//! assert!(word.is_some());
+//! # Ok(())
+//! # }
+//! ```
+//! ## Get all available words
+//!
+//! ```rust
+//! # fn gen() -> Result<(),&'static str> {
+//! let word_list = random_word::all();
+//! # Ok(())
+//! # }
+//! ```
 
 mod words_a_z;
 mod words_len_asc;
@@ -221,7 +238,7 @@ pub fn gen() -> &'static str {
 /// 
 #[inline]
 pub fn gen_starts_with(character: char) -> Option<&'static str> {
-    Some(select_random(&gen_all_starts_with(character)?))
+    Some(select_random(&all_starts_with(character)?))
 }
 
 /// Returns an alphabetically ordered slice of all words 
@@ -230,8 +247,8 @@ pub fn gen_starts_with(character: char) -> Option<&'static str> {
 /// # Example
 ///
 /// ```rust
-/// # fn gen_all_starts_with() -> Result<(),&'static str> {
-/// let word_list = random_word::gen_all_starts_with('t');
+/// # fn all_starts_with() -> Result<(),&'static str> {
+/// let word_list = random_word::all_starts_with('t');
 /// # Ok(())
 /// # }
 /// ```
@@ -242,7 +259,7 @@ pub fn gen_starts_with(character: char) -> Option<&'static str> {
 /// - the input parameter is not an alphabetic character
 /// 
 #[inline]
-pub fn gen_all_starts_with(character: char) -> Option<&'static [&'static str]> {
+pub fn all_starts_with(character: char) -> Option<&'static [&'static str]> {
     character.is_alphabetic().then_some(&WORDS_A_Z[match character {
         'a' | 'A' =>      0..10363,
         'b' | 'B' =>  10363..20327,
@@ -280,8 +297,8 @@ pub fn gen_all_starts_with(character: char) -> Option<&'static [&'static str]> {
 /// # Example
 ///
 /// ```rust
-/// # fn gen_all_len() -> Result<(),&'static str> {
-/// let word_list = random_word::gen_all_len(5);
+/// # fn all_len() -> Result<(),&'static str> {
+/// let word_list = random_word::all_len(5);
 /// # Ok(())
 /// # }
 /// ```
@@ -291,7 +308,7 @@ pub fn gen_all_starts_with(character: char) -> Option<&'static [&'static str]> {
 /// - the length parameter is less than 2 or greater than 15
 /// 
 #[inline]
-pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
+pub fn all_len(length: usize) -> Option<&'static [&'static str]> {
     (length > 1 && length < 16).then_some(&WORDS_LEN_ASC[match length {
         2  =>      0..99,
         3  =>     99..1102,
@@ -318,8 +335,8 @@ pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
 /// # Example
 ///
 /// ```rust
-/// # fn gen_all_len_starts_with() -> Result<(),&'static str> {
-/// let word_list = random_word::gen_all_len_starts_with(5,'a');
+/// # fn all_len_starts_with() -> Result<(),&'static str> {
+/// let word_list = random_word::all_len_starts_with(5,'a');
 /// # Ok(())
 /// # }
 /// ```
@@ -334,7 +351,7 @@ pub fn gen_all_len(length: usize) -> Option<&'static [&'static str]> {
 /// -   -   15 and 'y'
 /// 
 #[inline]
-pub fn gen_all_len_starts_with(length: usize, character: char) -> Option<&'static [&'static str]> {
+pub fn all_len_starts_with(length: usize, character: char) -> Option<&'static [&'static str]> {
     match (length, character) {
         (2, 'c' | 'C') | (2,  'v' | 'V') | (15, 'y' | 'Y') => return None,
         _ => (),
@@ -728,7 +745,7 @@ pub fn gen_all_len_starts_with(length: usize, character: char) -> Option<&'stati
 /// 
 #[inline]
 pub fn gen_len_starts_with(length: usize, character: char) -> Option<&'static str> {
-    Some(select_random(&gen_all_len_starts_with(length, character)?))
+    Some(select_random(&all_len_starts_with(length, character)?))
 }
 
 /// Returns a reference to a word with the specified length.
@@ -749,7 +766,7 @@ pub fn gen_len_starts_with(length: usize, character: char) -> Option<&'static st
 /// 
 #[inline]
 pub fn gen_len(length: usize) -> Option<&'static str> {
-    Some(select_random(&gen_all_len(length)?))
+    Some(select_random(&all_len(length)?))
 }
 
 /// Returns an alphabetically ordered array of 178,187 english words.
@@ -757,13 +774,13 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
 /// # Example
 ///
 /// ```rust
-/// # fn gen_all() -> Result<(),[&'static str; 178187]> {
-/// let word_list = random_word::gen_all();
+/// # fn all() -> Result<(),[&'static str; 178187]> {
+/// let word_list = random_word::all();
 /// # Ok(())
 /// # }
 /// ```
 ///
 #[inline]
-pub fn gen_all() -> &'static [&'static str; 178187] {
+pub fn all() -> &'static [&'static str; 178187] {
     &WORDS_A_Z
 }

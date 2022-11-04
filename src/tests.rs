@@ -54,9 +54,9 @@ fn gen_starts_with_test() {
 
 
 #[test]
-fn gen_all_starts_with_test() {
+fn all_starts_with_test() {
     ('a'..='z').chain('A'..'Z').for_each(|character| {
-        let word_list = gen_all_starts_with(character).expect("character is not alphabetic");
+        let word_list = all_starts_with(character).expect("character is not alphabetic");
         word_list.iter().for_each(|word| {
             let character = character.to_ascii_lowercase();
             assert!(!word.is_empty(), "word should not be empty");
@@ -81,9 +81,9 @@ fn gen_len_test() {
 }
 
 #[test]
-fn gen_all_len_test() {
+fn all_len_test() {
     (2..16).for_each(|length| {
-        let word_list = gen_all_len(length).unwrap();
+        let word_list = all_len(length).unwrap();
         word_list.iter().for_each(|word| {
             assert!(!word.is_empty(), 
                 "word should not be empty in word list");
@@ -117,15 +117,15 @@ fn gen_len_starts_with_test() {
 }
 
 #[test]
-fn gen_all_len_starts_with_test() {
+fn all_len_starts_with_test() {
     (2..16).for_each(|length| {
         ('a'..='z').for_each(|character| {
             match (length, character) {
                 (2,  'c') | (2,  'v') | (15, 'y') => {
-                    assert_eq!(gen_all_len_starts_with(length, character), None)
+                    assert_eq!(all_len_starts_with(length, character), None)
                 },
                 _ => {
-                    let word_list = gen_all_len_starts_with(length, character).unwrap();
+                    let word_list = all_len_starts_with(length, character).unwrap();
                     word_list.iter().for_each(|word| {
                         assert!(!word.is_empty(), 
                             "word should not be empty in word list");
@@ -142,8 +142,8 @@ fn gen_all_len_starts_with_test() {
 }
 
 #[test]
-fn gen_all_test() {
-    let word_list = gen_all();
+fn all_test() {
+    let word_list = all();
     word_list.iter().for_each(|word| {
         assert!(!word.is_empty(), 
             "word should not be empty in word list");
@@ -153,8 +153,8 @@ fn gen_all_test() {
 }
 
 #[test]
-fn gen_all_indexes_from_first_char() {
-    let word_list = gen_all();
+fn all_indexes_from_first_char() {
+    let word_list = all();
     ('a'..='z').for_each(|c| {
         let _ = word_list.iter().position(|w| w.starts_with(c))
             .expect("words starting with any alphabetic character 

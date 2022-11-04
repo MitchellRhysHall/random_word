@@ -18,3 +18,9 @@ let word = random_word::gen();
 let word = random_word::gen_starts_with('c');
 assert!(word.is_some());
 ```
+
+## Get all available words
+
+```rust
+let word_list = random_word::all();
+```
