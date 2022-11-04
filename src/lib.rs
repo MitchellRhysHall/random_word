@@ -168,27 +168,18 @@ while_true,
 //! ## Generating a random word
 //!
 //! ```rust
-//! # fn gen() -> Result<(),&'static str> {
 //! let word = random_word::gen();
-//! # Ok(())
-//! # }
 //! ```
 //! ## Generating a random word starting with 'c'
 //!
 //! ```rust
-//! # fn gen() -> Result<(),&'static str> {
 //! let word = random_word::gen_starts_with('c');
-//! assert!(word.is_some());
-//! # Ok(())
-//! # }
+//! assert!(word.is_some())
 //! ```
 //! ## Get all available words
 //!
 //! ```rust
-//! # fn gen() -> Result<(),&'static str> {
 //! let word_list = random_word::all();
-//! # Ok(())
-//! # }
 //! ```
 
 mod words_a_z;
@@ -208,10 +199,7 @@ fn select_random(array: &'static [&'static str]) -> &'static str {
 /// # Example
 ///
 /// ```rust
-/// # fn gen() -> Result<(),&'static str> {
 /// let word = random_word::gen();
-/// # Ok(())
-/// # }
 /// ```
 ///
 #[inline]
@@ -225,10 +213,7 @@ pub fn gen() -> &'static str {
 /// # Example
 ///
 /// ```rust
-/// # fn gen_starts_with() -> Result<(),&'static str> {
 /// let word = random_word::gen_starts_with('s');
-/// # Ok(())
-/// # }
 /// ```
 /// 
 /// # Errors
@@ -247,10 +232,8 @@ pub fn gen_starts_with(character: char) -> Option<&'static str> {
 /// # Example
 ///
 /// ```rust
-/// # fn all_starts_with() -> Result<(),&'static str> {
 /// let word_list = random_word::all_starts_with('t');
-/// # Ok(())
-/// # }
+/// assert!(word_list.is_some())
 /// ```
 ///
 /// # Errors
@@ -297,10 +280,8 @@ pub fn all_starts_with(character: char) -> Option<&'static [&'static str]> {
 /// # Example
 ///
 /// ```rust
-/// # fn all_len() -> Result<(),&'static str> {
 /// let word_list = random_word::all_len(5);
-/// # Ok(())
-/// # }
+/// assert!(word_list.is_some())
 /// ```
 /// # Errors
 /// 
@@ -335,10 +316,8 @@ pub fn all_len(length: usize) -> Option<&'static [&'static str]> {
 /// # Example
 ///
 /// ```rust
-/// # fn all_len_starts_with() -> Result<(),&'static str> {
-/// let word_list = random_word::all_len_starts_with(5,'a');
-/// # Ok(())
-/// # }
+/// let word_list = random_word::all_len_starts_with(5, 'a');
+/// assert!(word_list.is_some())
 /// ```
 /// # Errors
 /// 
@@ -728,10 +707,8 @@ pub fn all_len_starts_with(length: usize, character: char) -> Option<&'static [&
 /// # Example
 ///
 /// ```rust
-/// # fn gen_len_starts_with() -> Result<(),&'static str> {
 /// let word = random_word::gen_len_starts_with(9,'p');
-/// # Ok(())
-/// # }
+/// assert!(word.is_some())
 /// ```
 /// # Errors
 /// 
@@ -753,10 +730,8 @@ pub fn gen_len_starts_with(length: usize, character: char) -> Option<&'static st
 /// # Example
 ///
 /// ```rust
-/// # fn gen_len() -> Result<(),&'static str> {
 /// let word = random_word::gen_len(5);
-/// # Ok(())
-/// # }
+/// assert!(word.is_some())
 /// ```
 /// 
 /// # Errors
@@ -774,10 +749,7 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
 /// # Example
 ///
 /// ```rust
-/// # fn all() -> Result<(),[&'static str; 178187]> {
 /// let word_list = random_word::all();
-/// # Ok(())
-/// # }
 /// ```
 ///
 #[inline]
