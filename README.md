@@ -3,8 +3,11 @@
 The `random_word` crate provides an efficient way to generate random 
 english words. 
 
-All words are compiled with the library pre-sorted, 
+All words are compiled pre-sorted with the library,
 optimized for fast, zero allocation lookup.
+
+From v0.3.1 only x86_64 and aarch64 is supported for assembler
+random number generation
 
 ## Generating a random word
 
