@@ -16,4 +16,3 @@ keywords = [
 readme = "README.md"
 
 [dependencies]
-rand = "0"
