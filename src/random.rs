@@ -31,7 +31,6 @@ pub(crate) fn generate_u64() -> u64 {
     if success == 1 {
         result
     } else {
-        // Then attempt in code rng
         panic!("Only x86_64 and aarch64 is supported for random number generation!")
     }
 }

@@ -7,7 +7,7 @@ All words are compiled pre-sorted with the library,
 optimized for fast, zero allocation lookup.
 
 From v0.3.1 only x86_64 and aarch64 is supported for assembler
-random number generation
+random number generation.
 
 ## Generating a random word
 
