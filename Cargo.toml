@@ -16,3 +16,5 @@ keywords = [
 readme = "README.md"
 
 [dependencies]
+rand = "0.8.5"
+once_cell = "1.17.1"

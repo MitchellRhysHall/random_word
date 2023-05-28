@@ -1,4 +1,3 @@
-#![no_std]
 #![deny(
     absolute_paths_not_starting_with_crate,
     ambiguous_associated_items,
@@ -10,7 +9,6 @@
     bad_asm_style,
     bare_trait_objects,
     bindings_with_variant_name,
-    box_pointers,
     break_with_label_and_loop,
     cenum_impl_drop_cast,
     cenum_impl_drop_cast,
@@ -111,7 +109,6 @@
     trivial_numeric_casts,
     type_alias_bounds,
     tyvar_behind_raw_pointer,
-    unaligned_references,
     uncommon_codepoints,
     unconditional_panic,
     unconditional_recursion,
@@ -155,6 +152,7 @@
     where_clauses_object_safety,
     while_true
 )]
+
 //! # random_word
 //!
 //! The `random_word` crate provides an efficient way to generate random
@@ -163,8 +161,6 @@
 //! All words are compiled pre-sorted with the library,
 //! optimized for fast, zero allocation lookup.
 //!
-//! From v0.3.1 only x86_64 and aarch64 is supported for assembler
-//! random number generation
 //!
 //! ## Generating a random word
 //!
@@ -183,18 +179,17 @@
 //! let word_list = random_word::all();
 //! ```
 
-mod random;
 mod tests;
-mod words_a_z;
-mod words_len_asc;
+mod words;
 
-use words_a_z::WORDS_A_Z;
-use words_len_asc::WORDS_LEN_ASC;
+use rand::Rng;
+use words::WORDS_A_Z;
+use words::WORDS_LEN_ASC;
 
 #[inline]
 fn select_random(array: &'static [&'static str]) -> &'static str {
-    let random_number = random::generate_u64() as usize;
-    array[random_number % array.len()]
+    let random_number = rand::thread_rng().gen_range(0..array.len());
+    array[random_number]
 }
 
 /// Returns a reference to a randomly generated english word.
@@ -207,7 +202,7 @@ fn select_random(array: &'static [&'static str]) -> &'static str {
 ///
 #[inline]
 pub fn gen() -> &'static str {
-    select_random(&WORDS_A_Z)
+    select_random(&*WORDS_A_Z)
 }
 
 /// Returns a reference to a word that begins with the
@@ -753,7 +748,7 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
     Some(select_random(&all_len(length)?))
 }
 
-/// Returns an alphabetically ordered array of 178,187 english words.
+/// Returns an alphabetically ordered vector of 178,187 english words.
 ///
 /// # Example
 ///
@@ -762,6 +757,6 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
 /// ```
 ///
 #[inline]
-pub fn all() -> &'static [&'static str; 178187] {
+pub fn all() -> &'static Vec<&'static str> {
     &WORDS_A_Z
 }
