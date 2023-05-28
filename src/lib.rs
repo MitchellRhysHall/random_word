@@ -748,7 +748,7 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
     Some(select_random(&all_len(length)?))
 }
 
-/// Returns an alphabetically ordered vector of 178,187 english words.
+/// Returns an alphabetically ordered slice of 178,187 english words.
 ///
 /// # Example
 ///
@@ -757,6 +757,6 @@ pub fn gen_len(length: usize) -> Option<&'static str> {
 /// ```
 ///
 #[inline]
-pub fn all() -> &'static Vec<&'static str> {
+pub fn all() -> &'static [&'static str] {
     &WORDS_A_Z
 }
