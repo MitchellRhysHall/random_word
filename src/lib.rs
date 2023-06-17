@@ -3,26 +3,31 @@
 //! The `random_word` crate provides an efficient way to generate random
 //! english words.
 //!
-//! You MUST enable a language crate feature
-//! or function calls will return none found.
+//! You MUST enable a language crate feature.
 //! Example in cargo.toml:
 //! random_word = { version = "0.4.0", features = ["en"] }
+//! 
+//! You can optionally enable features "all" to use all 
+//! languages, however the binary size will be very large.
 //! 
 //! ## Generating a random word
 //!
 //! ```rust
-//! let word = random_word::gen();
+//! use random_word::*;
+//! let word = gen(Lang::En);
 //! ```
 //! ## Generating a random word starting with 'c'
 //!
 //! ```rust
-//! let word = random_word::gen_starts_with('c');
+//! use random_word::*;
+//! let word = gen_starts_with('c', Lang::En);
 //! assert!(word.is_some())
 //! ```
 //! ## Get all available words
 //!
 //! ```rust
-//! let word_list = random_word::all();
+//! use random_word::*;
+//! let word_list = all(Lang::En);
 //! ```
 
 mod tests;
@@ -39,9 +44,7 @@ fn select_random<'a>(array: &'a [&'a str]) -> &'a str {
 
 /// All supported languages. 
 /// 
-/// You MUST enable a language crate feature
-/// or function calls will return none found.
-/// 
+/// You MUST enable a language crate feature.
 /// Example in cargo.toml:
 /// random_word = { version = "0.4.0", features = ["en"] }
 /// 
@@ -51,14 +54,19 @@ fn select_random<'a>(array: &'a [&'a str]) -> &'a str {
 /// # Example
 ///
 /// ```rust
-/// let word = random_word::gen(Lang::En);
+/// use random_word::*;
+/// let word = gen(Lang::En);
 /// ```
 /// 
 #[derive(Debug, Hash, PartialEq, Eq, Copy, Clone)]
 pub enum Lang {
+    #[cfg(feature = "de")]
     De,
+    #[cfg(feature = "en")]
     En,
+    #[cfg(feature = "es")]
     Es,
+    #[cfg(feature = "fr")]
     Fr,
 }
 
@@ -67,7 +75,8 @@ pub enum Lang {
 /// # Example
 ///
 /// ```rust
-/// let word = random_word::gen(Lang::En);
+/// use random_word::*;
+/// let word = gen(Lang::En);
 /// ```
 /// 
 /// # Errors
@@ -85,7 +94,8 @@ pub fn gen<'a>(lang: Lang) -> Option<&'a str> {
 /// # Example
 ///
 /// ```rust
-/// let word = random_word::gen_starts_with('s');
+/// use random_word::*;
+/// let word = gen_starts_with('s', Lang::En);
 /// ```
 ///
 /// # Errors
@@ -103,7 +113,8 @@ pub fn gen_starts_with<'a>(char: char, lang: Lang) -> Option<&'a str> {
 /// # Example
 ///
 /// ```rust
-/// let word_list = random_word::all_starts_with('t');
+/// use random_word::*;
+/// let word_list = all_starts_with('t', Lang::En);
 /// assert!(word_list.is_some())
 /// ```
 ///
@@ -128,7 +139,8 @@ pub fn all_starts_with<'a>(char: char, lang: Lang) -> Option<&'a [&'a str]> {
 /// # Example
 ///
 /// ```rust
-/// let word_list = random_word::all_len(5, Lang::En);
+/// use random_word::*;
+/// let word_list = all_len(5, Lang::En);
 /// assert!(word_list.is_some())
 /// ```
 /// # Errors
@@ -152,7 +164,8 @@ pub fn all_len<'a>(len: usize, lang: Lang) -> Option<&'a [&'a str]> {
 /// # Example
 ///
 /// ```rust
-/// let word_list = random_word::all_len_starts_with(5, 'a', Lang::En);
+/// use random_word::*;
+/// let word_list = all_len_starts_with(5, 'a', Lang::En);
 /// assert!(word_list.is_some())
 /// ```
 /// # Errors
@@ -176,7 +189,8 @@ pub fn all_len_starts_with<'a>(len: usize, char: char, lang: Lang) -> Option<&'a
 /// # Example
 ///
 /// ```rust
-/// let word = random_word::gen_len_starts_with(9,'p');
+/// use random_word::*;
+/// let word = gen_len_starts_with(9, 'p', Lang::En);
 /// assert!(word.is_some())
 /// ```
 /// # Errors
@@ -193,7 +207,8 @@ pub fn gen_len_starts_with<'a>(len: usize, char: char, lang: Lang) -> Option<&'a
 /// # Example
 ///
 /// ```rust
-/// let word = random_word::gen_len(5);
+/// use random_word::*;
+/// let word = gen_len(5, Lang::En);
 /// assert!(word.is_some())
 /// ```
 ///
@@ -211,7 +226,8 @@ pub fn gen_len<'a>(len: usize, lang: Lang) -> Option<&'a str> {
 /// # Example
 ///
 /// ```rust
-/// let word_list = random_word::all();
+/// use random_word::*;
+/// let word_list = all(Lang::En);
 /// ```
 /// # Errors
 /// 

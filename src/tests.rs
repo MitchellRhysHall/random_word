@@ -2,6 +2,7 @@
 #[cfg(test)]
 mod Tests {
     use super::*;
+    use crate::*;
 
     #[test]
     fn select_random_test() {
