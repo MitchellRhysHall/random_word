@@ -1,7 +1,7 @@
 [package]
 name = "random_word"
 description = "Reliable and efficient functions for generating random english words"
-version = "0.3.1"
+version = "0.4.0"
 edition = "2021"
 authors = ["Mitchell Rhys Hall"]
 repository = "https://github.com/MitchellRhysHall/random_word"
@@ -15,6 +15,17 @@ keywords = [
 ]
 readme = "README.md"
 
+[features]
+all = ["de", "en", "es", "fr"]
+de = []
+en = []
+es = []
+fr = []
+
 [dependencies]
 rand = "0.8.5"
 once_cell = "1.17.1"
+miniz_oxide = "0.7.1"
+
+[build-dependencies]
+miniz_oxide = "0.7.1"
