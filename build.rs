@@ -1,5 +1,4 @@
 use std::{fs::{File, self}, io::{Read, Write, self, BufRead, BufReader, BufWriter}, path::Path, ffi::OsStr};
-
 use miniz_oxide::deflate::compress_to_vec;
 use unicase::UniCase;
 
@@ -57,6 +56,7 @@ pub fn compress_file(path: &str, output_path: &str) -> io::Result<()> {
     let mut file = File::open(path)?;
     let mut contents = Vec::new();
     file.read_to_end(&mut contents)?;
+
     let compressed = compress_to_vec(&contents, 6);
 
     let mut output_file = File::create(output_path)?;

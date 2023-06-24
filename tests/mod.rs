@@ -3,6 +3,7 @@
 mod Tests {
     use super::*;
     use crate::*;
+    use random_word::{Words, Lang};
     use unicase::UniCase;
 
     static LANGS: [Lang; 4] = [Lang::De, Lang::En, Lang::Es, Lang::Fr];
@@ -11,7 +12,8 @@ mod Tests {
     #[test]
     fn test_gen() {
         for lang in &LANGS {
-            let word = gen(lang);
+            let words = Words::from(*lang);
+            let word = words.gen(lang);
             assert!(word.len() > 0, "Generated word should not be empty.");
         }
     }
@@ -19,8 +21,9 @@ mod Tests {
     #[test]
     fn test_gen_starts_with() {
         for lang in &LANGS {
+            let words = Words::from(*lang);
             for ch in &VOWELS {
-                let word = gen_starts_with(ch, lang);
+                let word = words.gen_starts_with(ch, lang);
                 assert!(word.is_some(), "Should return Some for a valid language and character.");
                 let word_str = word.unwrap();
                 assert!(word_str.len() > 0, "Generated word should not be empty.");
@@ -35,10 +38,12 @@ mod Tests {
         let unsupported_char = '1';
 
         for lang in &LANGS {
-            let word_list = all_starts_with(&unsupported_char, lang);
+            let words = Words::from(*lang);
+
+            let word_list = words.all_starts_with(&unsupported_char, lang);
             assert!(word_list.is_none(), "Should return None for an unsupported character.");
 
-            let word_list = all_starts_with(&supported_char, lang);
+            let word_list = words.all_starts_with(&supported_char, lang);
             assert!(word_list.is_some(), "Should return Some for a supported character.");
 
             let word_list = word_list.unwrap();
@@ -59,7 +64,9 @@ mod Tests {
     #[test]
     fn test_all() {
         for lang in &LANGS {
-            let word_list = all(lang);
+            let words = Words::from(*lang);
+
+            let word_list = words.all(lang);
             
             // Check if the result is not empty
             assert!(!word_list.is_empty());
