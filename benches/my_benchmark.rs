@@ -14,49 +14,49 @@ fn criterion_benchmark(c: &mut Criterion) {
 
         let en = Words::from(lang).unwrap();
 
-        group.bench_with_input(BenchmarkId::new("all", lang), &lang, |b, &lang| {
+        group.bench_with_input(BenchmarkId::new("all", lang), &lang, |b, &_lang| {
             b.iter(|| en.all())
         });
 
         for len in 1..=10 {
-            group.bench_with_input(BenchmarkId::new("all len", format!("{:?}", (lang, len))), &(lang, len), |b, &(lang, len)| {
+            group.bench_with_input(BenchmarkId::new("all len", format!("{:?}", (lang, len))), &(lang, len), |b, &(_lang, len)| {
                 b.iter(|| en.all_len(black_box(len)))
             });
         }
 
         for ch in ['a', 'c', 't'].iter() {
-            group.bench_with_input(BenchmarkId::new("all starts with", format!("{:?}", (lang, *ch))), &(lang, *ch), |b, &(lang, ch)| {
+            group.bench_with_input(BenchmarkId::new("all starts with", format!("{:?}", (lang, *ch))), &(lang, *ch), |b, &(_lang, ch)| {
                 b.iter(|| en.all_starts_with(black_box(ch)))
             });
         }
 
         for len in 1..=10 {
             for ch in ['a', 'c', 't'].iter() {
-                group.bench_with_input(BenchmarkId::new("all len starts with", format!("{:?}", (lang, len, *ch))), &(lang, len, *ch), |b, &(lang, len, ch)| {
+                group.bench_with_input(BenchmarkId::new("all len starts with", format!("{:?}", (lang, len, *ch))), &(lang, len, *ch), |b, &(_lang, len, ch)| {
                     b.iter(|| en.all_len_starts_with(black_box(len), black_box(ch)))
                 });
             }
         }
 
-        group.bench_with_input(BenchmarkId::new("gen", lang), &lang, |b, &lang| {
+        group.bench_with_input(BenchmarkId::new("gen", lang), &lang, |b, &_lang| {
             b.iter(|| en.gen())
         });
 
         for len in 1..=10 {
-            group.bench_with_input(BenchmarkId::new("gen len", format!("{:?}", (lang, len))), &(lang, len), |b, &(lang, len)| {
+            group.bench_with_input(BenchmarkId::new("gen len", format!("{:?}", (lang, len))), &(lang, len), |b, &(_lang, len)| {
                 b.iter(|| en.gen_len(black_box(len)))
             });
         }
 
         for ch in ['a', 'c', 't'].iter() {
-            group.bench_with_input(BenchmarkId::new("gen starts with", format!("{:?}", (lang, *ch))), &(lang, *ch), |b, &(lang, ch)| {
+            group.bench_with_input(BenchmarkId::new("gen starts with", format!("{:?}", (lang, *ch))), &(lang, *ch), |b, &(_lang, ch)| {
                 b.iter(|| en.gen_starts_with(black_box(ch)))
             });
         }
 
         for len in 1..=10 {
             for ch in ['a', 'c', 't'].iter() {
-                group.bench_with_input(BenchmarkId::new("gen len starts with", format!("{:?}", (lang, len, *ch))), &(lang, len, *ch), |b, &(lang, len, ch)| {
+                group.bench_with_input(BenchmarkId::new("gen len starts with", format!("{:?}", (lang, len, *ch))), &(lang, len, *ch), |b, &(_lang, len, ch)| {
                     b.iter(|| en.gen_len_starts_with(black_box(len), black_box(ch)))
                 });
             }
