@@ -6,14 +6,14 @@ fn main()-> io::Result<()> {
     let txt_folderpath = "src/txt/";
     let gz_folderpath = "src/gz/";
 
-    for entry in fs::read_dir(txt_folderpath)? {
-        let entry = entry?;
-        let path = entry.path();
-        if path.is_file() && path.extension() == Some(std::ffi::OsStr::new("txt")) {
-            let filename = path.file_stem().unwrap().to_string_lossy();
-            compress_file(path.to_str().unwrap(), &format!("{}{}.gz", gz_folderpath, filename))?;
-        }
-    }
+    // for entry in fs::read_dir(txt_folderpath)? {
+    //     let entry = entry?;
+    //     let path = entry.path();
+    //     if path.is_file() && path.extension() == Some(std::ffi::OsStr::new("txt")) {
+    //         let filename = path.file_stem().unwrap().to_string_lossy();
+    //         compress_file(path.to_str().unwrap(), &format!("{}{}.gz", gz_folderpath, filename))?;
+    //     }
+    // }
 
     Ok(())
 }

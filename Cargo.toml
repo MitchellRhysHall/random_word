@@ -33,6 +33,7 @@ rand = "0.8.5"
 miniz_oxide = "0.7.1"
 unicase = "2.6.0"
 ahash = "0.8.3"
+once_cell = "1.18.0"
 
 [build-dependencies]
 rand = "0.8.5"
