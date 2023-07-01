@@ -15,11 +15,8 @@ keywords = [
     "random",
     "words",
     "generate",
-    "english",
     "multilingual",
-    "dictionary",
-    "vocabulary",
-    "lexicon"
+    "english"
 ]
 
 readme = "README.md"
