@@ -7,9 +7,8 @@ authors = ["Mitchell Rhys Hall"]
 repository = "https://github.com/MitchellRhysHall/random_word"
 license = "MIT"
 categories = [
-    "text-processing", 
-    "random-data", 
-    "linguistics"
+    "localization", 
+    "internationalization"
 ]
 
 keywords = [
