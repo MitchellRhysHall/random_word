@@ -4,11 +4,14 @@ The `random_word` crate provides an efficient way to generate
 random words. Included words can be filtered by length or
 first character.
 
+## Usage
 You **MUST** enable a crate language feature.
-Example `cargo.toml`:
-random_word = { version = "0.4.0", features = ["en"] }
-
 Crate language features are mandatory to reduce binary size.
+Example for English in Cargo.toml:
+```
+[dependencies]
+random_word = { version = "0.4.0", features = ["en"] }
+```
 
 **Supported Languages:**
 * `De` - German. Requires enabling "de" feature.
@@ -16,7 +19,7 @@ Crate language features are mandatory to reduce binary size.
 * `Es` - Spanish. Requires enabling "es" feature.
 * `Fr` - French. Requires enabling "fr" feature.
 
-## Generating a random english word
+## Generating a random English word
 
 ```rust
 use random_word::Lang;
@@ -24,7 +27,7 @@ use random_word::Lang;
 let word = random_word::gen(Lang::En);
 ```
 
-## Generating a random english word starting with 'c'
+## Generating a random English word starting with 'c'
 
 ```rust
 use random_word::Lang;
@@ -33,7 +36,7 @@ let word = random_word::gen_starts_with('c', Lang::En);
 assert!(word.is_some());
 ```
 
-## Get all 4 length french words
+## Get all 4 length French words
 
 ```rust
 use random_word::Lang;

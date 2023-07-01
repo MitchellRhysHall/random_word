@@ -4,11 +4,14 @@
 //! random words. Included words can be filtered by length or
 //! first character.
 //!
+//! ## Usage
 //! You **MUST** enable a crate language feature.
-//! Example in cargo.toml:
-//! random_word = { version = "0.4.0", features = ["en"] }
-//!
 //! Crate language features are mandatory to reduce binary size.
+//! Example for English in Cargo.toml:
+//! ```
+//! [dependencies]
+//! random_word = { version = "0.4.0", features = ["en"] }
+//! ```
 //!
 //! **Supported Languages:**
 //! - English
@@ -51,6 +54,7 @@ pub enum Lang {
 /// # Example
 /// ```
 /// use random_word::Lang;
+///
 #[cfg_attr(
     feature = "de",
     doc = "let words = random_word::all(Lang::De);\nassert!(!words.is_empty());"
@@ -78,6 +82,7 @@ pub fn all(lang: Lang) -> &'static [&'static str] {
 /// # Example
 /// ```
 /// use random_word::Lang;
+///
 #[cfg_attr(
     feature = "de",
     doc = "let word = random_word::gen(Lang::De);\nassert!(!word.is_empty());"
@@ -107,6 +112,7 @@ pub fn gen(lang: Lang) -> &'static str {
 /// # Example
 /// ```
 /// use random_word::Lang;
+///
 #[cfg_attr(
     feature = "de",
     doc = "let words = random_word::all_len(4, Lang::De);\nassert!(words.is_some());"
@@ -134,6 +140,7 @@ pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
 /// # Example
 /// ```
 /// use random_word::Lang;
+///
 #[cfg_attr(
     feature = "de",
     doc = "let word = random_word::gen_len(4, Lang::De);\nassert!(word.is_some());"
@@ -163,6 +170,7 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
 /// # Example
 /// ```
 /// use random_word::Lang;
+///
 #[cfg_attr(
     feature = "de",
     doc = "let words = random_word::all_starts_with('c', Lang::De);\nassert!(words.is_some());"
@@ -190,6 +198,7 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]
 /// # Example
 /// ```
 /// use random_word::Lang;
+///
 #[cfg_attr(
     feature = "de",
     doc = "let word = random_word::gen_starts_with('c', Lang::De);\nassert!(word.is_some());"
