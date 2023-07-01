@@ -14,7 +14,10 @@ fn main() -> io::Result<()> {
         let path = entry.path();
         if path.is_file() && path.extension() == Some(std::ffi::OsStr::new("txt")) {
             let filename = path.file_stem().unwrap().to_string_lossy();
-            compress_file(path.to_str().unwrap(), &format!("{}{}.gz", gz_folderpath, filename))?;
+            compress_file(
+                path.to_str().unwrap(),
+                &format!("{}{}.gz", gz_folderpath, filename),
+            )?;
         }
     }
 

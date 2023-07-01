@@ -2,7 +2,7 @@ use ahash::AHashMap;
 use miniz_oxide::inflate::decompress_to_vec;
 use once_cell::sync::Lazy;
 
-use crate::lang::Lang;
+use crate::Lang;
 
 pub(crate) type Word = &'static str;
 pub(crate) type Words = Box<[&'static str]>;

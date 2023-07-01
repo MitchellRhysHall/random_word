@@ -1,11 +1,14 @@
 //! # random_word
 //!
-//! The `random_word` crate provides an efficient way to generate random words.
-//! Included words can be filtered by length or first character.
+//! The `random_word` crate provides an efficient way to generate
+//! random words. Included words can be filtered by length or
+//! first character.
 //!
-//! You MUST enable a crate language feature.
+//! You **MUST** enable a crate language feature.
 //! Example in cargo.toml:
 //! random_word = { version = "0.4.0", features = ["en"] }
+//!
+//! Crate language features are mandatory to reduce binary size.
 //!
 //! **Supported Languages:**
 //! - English
@@ -14,17 +17,40 @@
 //! - French
 //!
 
-pub mod lang;
 mod words;
 
-use lang::Lang;
 use rand::{seq::SliceRandom, thread_rng};
+
+/// ISO 639-1 language codes.
+///
+/// Each variant corresponds to a
+/// set of words included in the binary.
+///
+/// You **MUST** enable the corresponding crate feature.
+///
+/// # Variants
+///
+/// * `De` - German. Requires enabling "de" feature.
+/// * `En` - English. Requires enabling "en" feature.
+/// * `Es` - Spanish. Requires enabling "es" feature.
+/// * `Fr` - French. Requires enabling "fr" feature.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Lang {
+    #[cfg(feature = "de")]
+    De,
+    #[cfg(feature = "en")]
+    En,
+    #[cfg(feature = "es")]
+    Es,
+    #[cfg(feature = "fr")]
+    Fr,
+}
 
 /// Returns all words with the given language.
 ///
 /// # Example
 /// ```
-/// use random_word::lang::Lang;
+/// use random_word::Lang;
 #[cfg_attr(
     feature = "de",
     doc = "let words = random_word::all(Lang::De);\nassert!(!words.is_empty());"
@@ -51,7 +77,7 @@ pub fn all(lang: Lang) -> &'static Box<[&'static str]> {
 ///
 /// # Example
 /// ```
-/// use random_word::lang::Lang;
+/// use random_word::Lang;
 #[cfg_attr(
     feature = "de",
     doc = "let word = random_word::gen(Lang::De);\nassert!(!word.is_empty());"
@@ -80,7 +106,7 @@ pub fn gen(lang: Lang) -> &'static str {
 ///
 /// # Example
 /// ```
-/// use random_word::lang::Lang;
+/// use random_word::Lang;
 #[cfg_attr(
     feature = "de",
     doc = "let words = random_word::all_len(4, Lang::De);\nassert!(words.is_some());"
@@ -107,7 +133,7 @@ pub fn all_len(len: usize, lang: Lang) -> Option<&'static Box<[&'static str]>> {
 ///
 /// # Example
 /// ```
-/// use random_word::lang::Lang;
+/// use random_word::Lang;
 #[cfg_attr(
     feature = "de",
     doc = "let word = random_word::gen_len(4, Lang::De);\nassert!(word.is_some());"
@@ -136,7 +162,7 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
 ///
 /// # Example
 /// ```
-/// use random_word::lang::Lang;
+/// use random_word::Lang;
 #[cfg_attr(
     feature = "de",
     doc = "let words = random_word::all_starts_with('c', Lang::De);\nassert!(words.is_some());"
@@ -163,7 +189,7 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static Box<[&'static 
 ///
 /// # Example
 /// ```
-/// use random_word::lang::Lang;
+/// use random_word::Lang;
 #[cfg_attr(
     feature = "de",
     doc = "let word = random_word::gen_starts_with('c', Lang::De);\nassert!(word.is_some());"
