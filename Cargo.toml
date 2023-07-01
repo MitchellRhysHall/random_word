@@ -52,3 +52,9 @@ criterion = "0.5.1"
 [[bench]]
 name = "my_benchmark"
 harness = false
+
+exclude = [
+    "src/txt/*",
+    "benches/*",
+    "build.rs"
+]
