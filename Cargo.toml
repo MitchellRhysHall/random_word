@@ -1,18 +1,81 @@
 [package]
 name = "random_word"
-description = "Reliable and efficient functions for generating random words"
+description = "Efficient functions for generating random words in many languages."
 version = "0.4.0"
 edition = "2021"
 authors = ["Mitchell Rhys Hall"]
 repository = "https://github.com/MitchellRhysHall/random_word"
 license = "MIT"
-categories = []
+categories = [
+    "text-processing", 
+    "random-data", 
+    "linguistics"
+]
+
 keywords = [
     "random",
     "words",
     "generate",
     "english",
+    "multilingual",
+    "dictionary",
+    "vocabulary",
+    "lexicon",
+    "linguistics",
+    "synonyms",
+    "antonyms",
+    "nouns",
+    "verbs",
+    "adjectives",
+    "adverbs",
+    "pronunciation",
+    "spelling",
+    "language",
+    "lingo",
+    "etymology",
+    "syllables",
+    "wordplay",
+    "semantics",
+    "syntax",
+    "context",
+    "linguistic features",
+    "speech recognition",
+    "natural language processing",
+    "tokenization",
+    "lemmatization",
+    "stemming",
+    "stop words",
+    "text mining",
+    "word embeddings",
+    "linguistic patterns",
+    "computational linguistics",
+    "linguistic research",
+    "word frequency",
+    "word association",
+    "word puzzle",
+    "word game",
+    "word processor",
+    "crossword",
+    "scrabble",
+    "hangman",
+    "boggle",
+    "word ladder",
+    "word search",
+    "word sorting",
+    "word count",
+    "word wrapping",
+    "spell-check API",
+    "text analysis API",
+    "language detection API",
+    "speech recognition API",
+    "speech synthesis API",
+    "natural language processing API",
+    "linguistic data",
+    "language proficiency",
+    "language learning",
+    "word of the day",
 ]
+
 readme = "README.md"
 
 [package.metadata.docs.rs]

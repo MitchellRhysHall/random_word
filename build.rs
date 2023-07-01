@@ -1,5 +1,6 @@
 use miniz_oxide::deflate::compress_to_vec;
 use std::{
+    ffi::OsStr,
     fs::{self, File},
     io::{self, Read, Write},
 };
@@ -12,7 +13,7 @@ fn main() -> io::Result<()> {
     for entry in fs::read_dir(txt_folderpath)? {
         let entry = entry?;
         let path = entry.path();
-        if path.is_file() && path.extension() == Some(std::ffi::OsStr::new("txt")) {
+        if path.is_file() && path.extension() == Some(OsStr::new("txt")) {
             let filename = path.file_stem().unwrap().to_string_lossy();
             compress_file(
                 path.to_str().unwrap(),
@@ -29,7 +30,7 @@ pub fn compress_file(path: &str, output_path: &str) -> io::Result<()> {
     file.read_to_end(&mut contents)?;
 
     let mut lines: Vec<&str> = std::str::from_utf8(&contents).unwrap().lines().collect();
-    lines.sort_by_key(|w| UniCase::new(w.clone()));
+    lines.sort_by_key(|&w| UniCase::new(w));
 
     let compressed = compress_to_vec(lines.join("\n").as_bytes(), 6);
 

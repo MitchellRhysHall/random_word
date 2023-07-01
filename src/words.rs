@@ -4,7 +4,6 @@ use once_cell::sync::Lazy;
 
 use crate::Lang;
 
-pub(crate) type Word = &'static str;
 pub(crate) type Words = Box<[&'static str]>;
 
 macro_rules! generate_lazy_db_from_file {
@@ -62,13 +61,13 @@ generate_lazy_db_from_file!(fr);
 pub(crate) fn get(lang: Lang) -> &'static Words {
     match lang {
         #[cfg(feature = "de")]
-        Lang::De => &*DE,
+        Lang::De => &DE,
         #[cfg(feature = "en")]
-        Lang::En => &*EN,
+        Lang::En => &EN,
         #[cfg(feature = "es")]
-        Lang::Es => &*ES,
+        Lang::Es => &ES,
         #[cfg(feature = "fr")]
-        Lang::Fr => &*FR,
+        Lang::Fr => &FR,
     }
 }
 

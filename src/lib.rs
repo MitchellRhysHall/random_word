@@ -69,7 +69,7 @@ pub enum Lang {
 )]
 /// ```
 #[inline(always)]
-pub fn all(lang: Lang) -> &'static Box<[&'static str]> {
+pub fn all(lang: Lang) -> &'static [&'static str] {
     words::get(lang)
 }
 
@@ -125,8 +125,8 @@ pub fn gen(lang: Lang) -> &'static str {
 )]
 /// ```
 #[inline(always)]
-pub fn all_len(len: usize, lang: Lang) -> Option<&'static Box<[&'static str]>> {
-    words::get_len(len, lang)
+pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
+    words::get_len(len, lang).map(|boxed| &**boxed)
 }
 
 /// Generates a random word with the given length and language.
@@ -181,8 +181,8 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
 )]
 /// ```
 #[inline(always)]
-pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static Box<[&'static str]>> {
-    words::get_starts_with(char, lang)
+pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]> {
+    words::get_starts_with(char, lang).map(|boxed| &**boxed)
 }
 
 /// Generates a random word with the given starting character and language.
