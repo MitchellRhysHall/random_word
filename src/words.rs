@@ -56,6 +56,8 @@ generate_lazy_db_from_file!(en);
 generate_lazy_db_from_file!(es);
 #[cfg(feature = "fr")]
 generate_lazy_db_from_file!(fr);
+#[cfg(feature = "zh")]
+generate_lazy_db_from_file!(zh);
 
 #[inline(always)]
 pub(crate) fn get(lang: Lang) -> &'static Words {
@@ -68,6 +70,8 @@ pub(crate) fn get(lang: Lang) -> &'static Words {
         Lang::Es => &ES,
         #[cfg(feature = "fr")]
         Lang::Fr => &FR,
+        #[cfg(feature = "zh")]
+        Lang::Zh => &ZH,
     }
 }
 
@@ -82,6 +86,8 @@ pub(crate) fn get_len(len: usize, lang: Lang) -> Option<&'static Words> {
         Lang::Es => ES_LEN.get(&len),
         #[cfg(feature = "fr")]
         Lang::Fr => FR_LEN.get(&len),
+        #[cfg(feature = "zh")]
+        Lang::Zh => ZH_LEN.get(&len),
     }
 }
 
@@ -96,5 +102,7 @@ pub(crate) fn get_starts_with(char: char, lang: Lang) -> Option<&'static Words> 
         Lang::Es => ES_STARTS_WITH.get(&char),
         #[cfg(feature = "fr")]
         Lang::Fr => FR_STARTS_WITH.get(&char),
+        #[cfg(feature = "zh")]
+        Lang::Zh => ZH_STARTS_WITH.get(&char),
     }
 }

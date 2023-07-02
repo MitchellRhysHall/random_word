@@ -8,7 +8,7 @@
 //! You **MUST** enable a crate language feature.
 //! Crate language features are mandatory to reduce binary size.
 //! Example for English in Cargo.toml:
-//! ```
+//! ```toml
 //! [dependencies]
 //! random_word = { version = "0.4.0", features = ["en"] }
 //! ```
@@ -18,6 +18,7 @@
 //! - Spanish
 //! - German
 //! - French
+//! - Chinese
 //!
 
 mod words;
@@ -37,6 +38,8 @@ use rand::{seq::SliceRandom, thread_rng};
 /// * `En` - English. Requires enabling "en" feature.
 /// * `Es` - Spanish. Requires enabling "es" feature.
 /// * `Fr` - French. Requires enabling "fr" feature.
+/// * `Zh` - Chinese. Requires enabling "zh" feature.
+///
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Lang {
     #[cfg(feature = "de")]
@@ -47,6 +50,8 @@ pub enum Lang {
     Es,
     #[cfg(feature = "fr")]
     Fr,
+    #[cfg(feature = "zh")]
+    Zh,
 }
 
 /// Returns all words with the given language.
@@ -70,6 +75,10 @@ pub enum Lang {
 #[cfg_attr(
     feature = "fr",
     doc = "let words = random_word::all(Lang::Fr);\nassert!(!words.is_empty());"
+)]
+#[cfg_attr(
+    feature = "zh",
+    doc = "let words = random_word::all(Lang::Zh);\nassert!(!words.is_empty());"
 )]
 /// ```
 #[inline(always)]
@@ -98,6 +107,10 @@ pub fn all(lang: Lang) -> &'static [&'static str] {
 #[cfg_attr(
     feature = "fr",
     doc = "let word = random_word::gen(Lang::Fr);\nassert!(!word.is_empty());"
+)]
+#[cfg_attr(
+    feature = "zh",
+    doc = "let word = random_word::gen(Lang::Zh);\nassert!(!word.is_empty());"
 )]
 /// ```
 #[inline(always)]
@@ -129,6 +142,10 @@ pub fn gen(lang: Lang) -> &'static str {
     feature = "fr",
     doc = "let words = random_word::all_len(4, Lang::Fr);\nassert!(words.is_some());"
 )]
+#[cfg_attr(
+    feature = "zh",
+    doc = "let words = random_word::all_len(4, Lang::Zh);\nassert!(words.is_some());"
+)]
 /// ```
 #[inline(always)]
 pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
@@ -156,6 +173,10 @@ pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
 #[cfg_attr(
     feature = "fr",
     doc = "let word = random_word::gen_len(4, Lang::Fr);\nassert!(word.is_some());"
+)]
+#[cfg_attr(
+    feature = "zh",
+    doc = "let word = random_word::gen_len(4, Lang::Zh);\nassert!(word.is_some());"
 )]
 /// ```
 #[inline(always)]
@@ -187,6 +208,10 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
     feature = "fr",
     doc = "let words = random_word::all_starts_with('c', Lang::Fr);\nassert!(words.is_some());"
 )]
+#[cfg_attr(
+    feature = "zh",
+    doc = "let words = random_word::all_starts_with('c', Lang::Zh);\nassert!(words.is_some());"
+)]
 /// ```
 #[inline(always)]
 pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]> {
@@ -214,6 +239,10 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]
 #[cfg_attr(
     feature = "fr",
     doc = "let word = random_word::gen_starts_with('c', Lang::Fr);\nassert!(word.is_some());"
+)]
+#[cfg_attr(
+    feature = "zh",
+    doc = "let word = random_word::gen_starts_with('c', Lang::Zh);\nassert!(word.is_some());"
 )]
 /// ```
 #[inline(always)]

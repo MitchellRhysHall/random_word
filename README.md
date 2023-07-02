@@ -8,7 +8,7 @@ first character.
 You **MUST** enable a crate language feature.
 Crate language features are mandatory to reduce binary size.
 Example for English in Cargo.toml:
-```
+```toml
 [dependencies]
 random_word = { version = "0.4.0", features = ["en"] }
 ```
@@ -18,6 +18,7 @@ random_word = { version = "0.4.0", features = ["en"] }
 * `En` - English. Requires enabling "en" feature.
 * `Es` - Spanish. Requires enabling "es" feature.
 * `Fr` - French. Requires enabling "fr" feature.
+* `Zh` - Chinese. Requires enabling "zh" feature.
 
 ## Generating a random English word
 
