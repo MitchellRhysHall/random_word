@@ -1,6 +1,7 @@
 use ahash::AHashMap;
-use miniz_oxide::inflate::decompress_to_vec;
+use brotli::Decompressor;
 use once_cell::sync::Lazy;
+use std::io::{Cursor, Read};
 
 use crate::Lang;
 
@@ -10,9 +11,13 @@ macro_rules! generate_lazy_db_from_file {
     ($file_stem:ident) => {
         paste::paste! {
             static [<$file_stem:upper _COMPRESSED>]: Lazy<String> = Lazy::new(|| {
-                let compressed_bytes = include_bytes!(concat!("gz/", stringify!($file_stem), ".gz"));
-                let decompressed_bytes = decompress_to_vec(compressed_bytes)
-                    .expect("Decompression failed");
+                let compressed_bytes = include_bytes!(concat!("br/", stringify!($file_stem), ".br"));
+                let cursor = Cursor::new(compressed_bytes);
+                let mut decompressor = Decompressor::new(cursor, 4096);
+
+                let mut decompressed_bytes = Vec::new();
+                decompressor.read_to_end(&mut decompressed_bytes).expect("Decompression failed");
+
                 let decompressed_string = String::from_utf8(decompressed_bytes)
                     .expect("Decompression resulted in invalid UTF-8");
 
