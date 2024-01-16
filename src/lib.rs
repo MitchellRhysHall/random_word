@@ -10,7 +10,7 @@
 //! Example for English in Cargo.toml:
 //! ```toml
 //! [dependencies]
-//! random_word = { version = "0.4.1", features = ["en"] }
+//! random_word = { version = "0.4.2", features = ["en"] }
 //! ```
 //!
 //! **Supported Languages:**
@@ -18,6 +18,7 @@
 //! - Spanish
 //! - German
 //! - French
+//! - Japanese
 //! - Chinese
 //!
 
@@ -38,6 +39,7 @@ use rand::{seq::SliceRandom, thread_rng};
 /// * `En` - English. Requires enabling "en" feature.
 /// * `Es` - Spanish. Requires enabling "es" feature.
 /// * `Fr` - French. Requires enabling "fr" feature.
+/// * `Ja` - Japanese. Requires enabling "ja" feature.
 /// * `Zh` - Chinese. Requires enabling "zh" feature.
 ///
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -50,6 +52,8 @@ pub enum Lang {
     Es,
     #[cfg(feature = "fr")]
     Fr,
+    #[cfg(feature = "ja")]
+    Ja,
     #[cfg(feature = "zh")]
     Zh,
 }
@@ -70,11 +74,15 @@ pub enum Lang {
 )]
 #[cfg_attr(
     feature = "es",
-    doc = "let words = random_word::all(Lang::En);\nassert!(!words.is_empty());"
+    doc = "let words = random_word::all(Lang::Es);\nassert!(!words.is_empty());"
 )]
 #[cfg_attr(
     feature = "fr",
     doc = "let words = random_word::all(Lang::Fr);\nassert!(!words.is_empty());"
+)]
+#[cfg_attr(
+    feature = "ja",
+    doc = "let words = random_word::all(Lang::Ja);\nassert!(!words.is_empty());"
 )]
 #[cfg_attr(
     feature = "zh",
@@ -102,11 +110,15 @@ pub fn all(lang: Lang) -> &'static [&'static str] {
 )]
 #[cfg_attr(
     feature = "es",
-    doc = "let word = random_word::gen(Lang::En);\nassert!(!word.is_empty());"
+    doc = "let word = random_word::gen(Lang::Es);\nassert!(!word.is_empty());"
 )]
 #[cfg_attr(
     feature = "fr",
     doc = "let word = random_word::gen(Lang::Fr);\nassert!(!word.is_empty());"
+)]
+#[cfg_attr(
+    feature = "ja",
+    doc = "let word = random_word::gen(Lang::Ja);\nassert!(!word.is_empty());"
 )]
 #[cfg_attr(
     feature = "zh",
@@ -136,11 +148,15 @@ pub fn gen(lang: Lang) -> &'static str {
 )]
 #[cfg_attr(
     feature = "es",
-    doc = "let words = random_word::all_len(4, Lang::En);\nassert!(words.is_some());"
+    doc = "let words = random_word::all_len(4, Lang::Es);\nassert!(words.is_some());"
 )]
 #[cfg_attr(
     feature = "fr",
     doc = "let words = random_word::all_len(4, Lang::Fr);\nassert!(words.is_some());"
+)]
+#[cfg_attr(
+    feature = "ja",
+    doc = "let words = random_word::all_len(4, Lang::Ja);\nassert!(words.is_some());"
 )]
 #[cfg_attr(
     feature = "zh",
@@ -168,11 +184,15 @@ pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
 )]
 #[cfg_attr(
     feature = "es",
-    doc = "let word = random_word::gen_len(4, Lang::En);\nassert!(word.is_some());"
+    doc = "let word = random_word::gen_len(4, Lang::Es);\nassert!(word.is_some());"
 )]
 #[cfg_attr(
     feature = "fr",
     doc = "let word = random_word::gen_len(4, Lang::Fr);\nassert!(word.is_some());"
+)]
+#[cfg_attr(
+    feature = "ja",
+    doc = "let word = random_word::gen_len(4, Lang::Ja);\nassert!(word.is_some());"
 )]
 #[cfg_attr(
     feature = "zh",
@@ -194,7 +214,7 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
 ///
 #[cfg_attr(
     feature = "de",
-    doc = "let words = random_word::all_starts_with('c', Lang::De);\nassert!(words.is_some());"
+    doc = "let words = random_word::all_starts_with('Ü', Lang::De);\nassert!(words.is_some());"
 )]
 #[cfg_attr(
     feature = "en",
@@ -202,15 +222,19 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
 )]
 #[cfg_attr(
     feature = "es",
-    doc = "let words = random_word::all_starts_with('c', Lang::En);\nassert!(words.is_some());"
+    doc = "let words = random_word::all_starts_with('c', Lang::Es);\nassert!(words.is_some());"
 )]
 #[cfg_attr(
     feature = "fr",
     doc = "let words = random_word::all_starts_with('c', Lang::Fr);\nassert!(words.is_some());"
 )]
 #[cfg_attr(
+    feature = "ja",
+    doc = "let words = random_word::all_starts_with('県', Lang::Ja);\nassert!(words.is_some());"
+)]
+#[cfg_attr(
     feature = "zh",
-    doc = "let words = random_word::all_starts_with('c', Lang::Zh);\nassert!(words.is_some());"
+    doc = "let words = random_word::all_starts_with('龎', Lang::Zh);\nassert!(words.is_some());"
 )]
 /// ```
 #[inline(always)]
@@ -226,7 +250,7 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]
 ///
 #[cfg_attr(
     feature = "de",
-    doc = "let word = random_word::gen_starts_with('c', Lang::De);\nassert!(word.is_some());"
+    doc = "let word = random_word::gen_starts_with('Ü', Lang::De);\nassert!(word.is_some());"
 )]
 #[cfg_attr(
     feature = "en",
@@ -234,15 +258,19 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]
 )]
 #[cfg_attr(
     feature = "es",
-    doc = "let word = random_word::gen_starts_with('c', Lang::En);\nassert!(word.is_some());"
+    doc = "let word = random_word::gen_starts_with('c', Lang::Es);\nassert!(word.is_some());"
 )]
 #[cfg_attr(
     feature = "fr",
     doc = "let word = random_word::gen_starts_with('c', Lang::Fr);\nassert!(word.is_some());"
 )]
 #[cfg_attr(
+    feature = "ja",
+    doc = "let word = random_word::gen_starts_with('県', Lang::Ja);\nassert!(word.is_some());"
+)]
+#[cfg_attr(
     feature = "zh",
-    doc = "let word = random_word::gen_starts_with('c', Lang::Zh);\nassert!(word.is_some());"
+    doc = "let word = random_word::gen_starts_with('龎', Lang::Zh);\nassert!(word.is_some());"
 )]
 /// ```
 #[inline(always)]
