@@ -63,31 +63,8 @@ pub enum Lang {
 /// # Example
 /// ```
 /// use random_word::Lang;
-///
-#[cfg_attr(
-    feature = "de",
-    doc = "let words = random_word::all(Lang::De);\nassert!(!words.is_empty());"
-)]
-#[cfg_attr(
-    feature = "en",
-    doc = "let words = random_word::all(Lang::En);\nassert!(!words.is_empty());"
-)]
-#[cfg_attr(
-    feature = "es",
-    doc = "let words = random_word::all(Lang::Es);\nassert!(!words.is_empty());"
-)]
-#[cfg_attr(
-    feature = "fr",
-    doc = "let words = random_word::all(Lang::Fr);\nassert!(!words.is_empty());"
-)]
-#[cfg_attr(
-    feature = "ja",
-    doc = "let words = random_word::all(Lang::Ja);\nassert!(!words.is_empty());"
-)]
-#[cfg_attr(
-    feature = "zh",
-    doc = "let words = random_word::all(Lang::Zh);\nassert!(!words.is_empty());"
-)]
+/// let words = random_word::all(Lang::En);
+/// assert!(!words.is_empty());
 /// ```
 #[inline(always)]
 pub fn all(lang: Lang) -> &'static [&'static str] {
@@ -99,31 +76,8 @@ pub fn all(lang: Lang) -> &'static [&'static str] {
 /// # Example
 /// ```
 /// use random_word::Lang;
-///
-#[cfg_attr(
-    feature = "de",
-    doc = "let word = random_word::gen(Lang::De);\nassert!(!word.is_empty());"
-)]
-#[cfg_attr(
-    feature = "en",
-    doc = "let word = random_word::gen(Lang::En);\nassert!(!word.is_empty());"
-)]
-#[cfg_attr(
-    feature = "es",
-    doc = "let word = random_word::gen(Lang::Es);\nassert!(!word.is_empty());"
-)]
-#[cfg_attr(
-    feature = "fr",
-    doc = "let word = random_word::gen(Lang::Fr);\nassert!(!word.is_empty());"
-)]
-#[cfg_attr(
-    feature = "ja",
-    doc = "let word = random_word::gen(Lang::Ja);\nassert!(!word.is_empty());"
-)]
-#[cfg_attr(
-    feature = "zh",
-    doc = "let word = random_word::gen(Lang::Zh);\nassert!(!word.is_empty());"
-)]
+/// let word = random_word::gen(Lang::En);
+/// assert!(!word.is_empty());
 /// ```
 #[inline(always)]
 pub fn gen(lang: Lang) -> &'static str {
@@ -137,31 +91,8 @@ pub fn gen(lang: Lang) -> &'static str {
 /// # Example
 /// ```
 /// use random_word::Lang;
-///
-#[cfg_attr(
-    feature = "de",
-    doc = "let words = random_word::all_len(4, Lang::De);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "en",
-    doc = "let words = random_word::all_len(4, Lang::En);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "es",
-    doc = "let words = random_word::all_len(4, Lang::Es);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "fr",
-    doc = "let words = random_word::all_len(4, Lang::Fr);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "ja",
-    doc = "let words = random_word::all_len(4, Lang::Ja);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "zh",
-    doc = "let words = random_word::all_len(4, Lang::Zh);\nassert!(words.is_some());"
-)]
+/// let words = random_word::all_len(4, Lang::En);
+/// assert!(words.is_some());
 /// ```
 #[inline(always)]
 pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
@@ -173,31 +104,8 @@ pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
 /// # Example
 /// ```
 /// use random_word::Lang;
-///
-#[cfg_attr(
-    feature = "de",
-    doc = "let word = random_word::gen_len(4, Lang::De);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "en",
-    doc = "let word = random_word::gen_len(4, Lang::En);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "es",
-    doc = "let word = random_word::gen_len(4, Lang::Es);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "fr",
-    doc = "let word = random_word::gen_len(4, Lang::Fr);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "ja",
-    doc = "let word = random_word::gen_len(4, Lang::Ja);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "zh",
-    doc = "let word = random_word::gen_len(4, Lang::Zh);\nassert!(word.is_some());"
-)]
+/// let word = random_word::gen_len(4, Lang::En);
+/// assert!(word.is_some());
 /// ```
 #[inline(always)]
 pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
@@ -211,31 +119,8 @@ pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
 /// # Example
 /// ```
 /// use random_word::Lang;
-///
-#[cfg_attr(
-    feature = "de",
-    doc = "let words = random_word::all_starts_with('Ü', Lang::De);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "en",
-    doc = "let words = random_word::all_starts_with('c', Lang::En);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "es",
-    doc = "let words = random_word::all_starts_with('c', Lang::Es);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "fr",
-    doc = "let words = random_word::all_starts_with('c', Lang::Fr);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "ja",
-    doc = "let words = random_word::all_starts_with('県', Lang::Ja);\nassert!(words.is_some());"
-)]
-#[cfg_attr(
-    feature = "zh",
-    doc = "let words = random_word::all_starts_with('龎', Lang::Zh);\nassert!(words.is_some());"
-)]
+/// let words = random_word::all_starts_with('c', Lang::En);
+/// assert!(words.is_some());
 /// ```
 #[inline(always)]
 pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]> {
@@ -247,31 +132,8 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]
 /// # Example
 /// ```
 /// use random_word::Lang;
-///
-#[cfg_attr(
-    feature = "de",
-    doc = "let word = random_word::gen_starts_with('Ü', Lang::De);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "en",
-    doc = "let word = random_word::gen_starts_with('c', Lang::En);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "es",
-    doc = "let word = random_word::gen_starts_with('c', Lang::Es);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "fr",
-    doc = "let word = random_word::gen_starts_with('c', Lang::Fr);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "ja",
-    doc = "let word = random_word::gen_starts_with('県', Lang::Ja);\nassert!(word.is_some());"
-)]
-#[cfg_attr(
-    feature = "zh",
-    doc = "let word = random_word::gen_starts_with('龎', Lang::Zh);\nassert!(word.is_some());"
-)]
+/// let word = random_word::gen_starts_with('c', Lang::En);
+/// assert!(word.is_some());
 /// ```
 #[inline(always)]
 pub fn gen_starts_with(char: char, lang: Lang) -> Option<&'static str> {

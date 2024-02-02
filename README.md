@@ -10,7 +10,7 @@ Crate language features are mandatory to reduce binary size.
 Example for English in Cargo.toml:
 ```toml
 [dependencies]
-random_word = { version = "0.4.2", features = ["en"] }
+random_word = { version = "0.4.3", features = ["en"] }
 ```
 
 **Supported Languages:**
