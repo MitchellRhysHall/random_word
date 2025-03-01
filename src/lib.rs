@@ -80,7 +80,7 @@ pub fn all(lang: Lang) -> &'static [&'static str] {
 /// assert!(!word.is_empty());
 /// ```
 #[inline(always)]
-pub fn gen(lang: Lang) -> &'static str {
+pub fn generate(lang: Lang) -> &'static str {
     words::get(lang)
         .choose(&mut thread_rng())
         .expect("array is empty")

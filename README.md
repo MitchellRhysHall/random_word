@@ -26,7 +26,7 @@ random_word = { version = "0.4.3", features = ["en"] }
 ```rust
 use random_word::Lang;
 
-let word = random_word::gen(Lang::En);
+let word = random_word::generate(Lang::En);
 ```
 
 ## Generating a random English word starting with 'c'
