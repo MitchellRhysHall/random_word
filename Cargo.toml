@@ -1,8 +1,8 @@
 [package]
 name = "random_word"
 description = "Efficient functions for generating random words in many languages."
-version = "0.4.3"
-edition = "2021"
+version = "0.5.0"
+edition = "2024"
 authors = ["Mitchell Rhys Hall"]
 repository = "https://github.com/MitchellRhysHall/random_word"
 license = "MIT"
@@ -35,6 +35,7 @@ en = []
 es = []
 fr = []
 ja = []
+ru = []
 zh = []
 
 [dependencies]

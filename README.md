@@ -10,7 +10,7 @@ Crate language features are mandatory to reduce binary size.
 Example for English in Cargo.toml:
 ```toml
 [dependencies]
-random_word = { version = "0.4.3", features = ["en"] }
+random_word = { version = "0.5.0", features = ["en"] }
 ```
 
 **Supported Languages:**
@@ -19,6 +19,7 @@ random_word = { version = "0.4.3", features = ["en"] }
 * `Es` - Spanish. Requires enabling "es" feature.
 * `Fr` - French. Requires enabling "fr" feature.
 * `Ja` - Japanese. Requires enabling "ja" feature.
+* `Ru` - Russian. Requires enabling "ru" feature.
 * `Zh` - Chinese. Requires enabling "zh" feature.
 
 ## Generating a random English word
@@ -26,7 +27,7 @@ random_word = { version = "0.4.3", features = ["en"] }
 ```rust
 use random_word::Lang;
 
-let word = random_word::gen(Lang::En);
+let word = random_word::get(Lang::En);
 ```
 
 ## Generating a random English word starting with 'c'
@@ -34,7 +35,7 @@ let word = random_word::gen(Lang::En);
 ```rust
 use random_word::Lang;
 
-let word = random_word::gen_starts_with('c', Lang::En);
+let word = random_word::get_starts_with('c', Lang::En);
 assert!(word.is_some());
 ```
 

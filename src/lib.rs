@@ -10,7 +10,7 @@
 //! Example for English in Cargo.toml:
 //! ```toml
 //! [dependencies]
-//! random_word = { version = "0.4.2", features = ["en"] }
+//! random_word = { version = "0.5.0", features = ["en"] }
 //! ```
 //!
 //! **Supported Languages:**
@@ -19,6 +19,7 @@
 //! - German
 //! - French
 //! - Japanese
+//! - Russian
 //! - Chinese
 //!
 
@@ -40,6 +41,7 @@ use rand::{seq::SliceRandom, thread_rng};
 /// * `Es` - Spanish. Requires enabling "es" feature.
 /// * `Fr` - French. Requires enabling "fr" feature.
 /// * `Ja` - Japanese. Requires enabling "ja" feature.
+/// * `Ru` - Russian. Requires enabling "ru" feature.
 /// * `Zh` - Chinese. Requires enabling "zh" feature.
 ///
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -54,6 +56,8 @@ pub enum Lang {
     Fr,
     #[cfg(feature = "ja")]
     Ja,
+    #[cfg(feature = "ru")]
+    Ru,
     #[cfg(feature = "zh")]
     Zh,
 }
@@ -71,16 +75,16 @@ pub fn all(lang: Lang) -> &'static [&'static str] {
     words::get(lang)
 }
 
-/// Generates a random word with the given language.
+/// Returns a random word with the given language.
 ///
 /// # Example
 /// ```
 /// use random_word::Lang;
-/// let word = random_word::gen(Lang::En);
+/// let word = random_word::get(Lang::En);
 /// assert!(!word.is_empty());
 /// ```
 #[inline(always)]
-pub fn gen(lang: Lang) -> &'static str {
+pub fn get(lang: Lang) -> &'static str {
     words::get(lang)
         .choose(&mut thread_rng())
         .expect("array is empty")
@@ -99,16 +103,16 @@ pub fn all_len(len: usize, lang: Lang) -> Option<&'static [&'static str]> {
     words::get_len(len, lang).map(|boxed| &**boxed)
 }
 
-/// Generates a random word with the given length and language.
+/// Returns a random word with the given length and language.
 ///
 /// # Example
 /// ```
 /// use random_word::Lang;
-/// let word = random_word::gen_len(4, Lang::En);
+/// let word = random_word::get_len(4, Lang::En);
 /// assert!(word.is_some());
 /// ```
 #[inline(always)]
-pub fn gen_len(len: usize, lang: Lang) -> Option<&'static str> {
+pub fn get_len(len: usize, lang: Lang) -> Option<&'static str> {
     words::get_len(len, lang)?
         .choose(&mut thread_rng())
         .copied()
@@ -127,16 +131,16 @@ pub fn all_starts_with(char: char, lang: Lang) -> Option<&'static [&'static str]
     words::get_starts_with(char, lang).map(|boxed| &**boxed)
 }
 
-/// Generates a random word with the given starting character and language.
+/// Returns a random word with the given starting character and language.
 ///
 /// # Example
 /// ```
 /// use random_word::Lang;
-/// let word = random_word::gen_starts_with('c', Lang::En);
+/// let word = random_word::get_starts_with('c', Lang::En);
 /// assert!(word.is_some());
 /// ```
 #[inline(always)]
-pub fn gen_starts_with(char: char, lang: Lang) -> Option<&'static str> {
+pub fn get_starts_with(char: char, lang: Lang) -> Option<&'static str> {
     words::get_starts_with(char, lang)?
         .choose(&mut thread_rng())
         .copied()
